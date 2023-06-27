@@ -13,7 +13,23 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL81Dialect
         show_sql: true
 
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/test_db?useSSL=false&serverTimezone=UTC
+#    username: user
+#    password: password
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    database-platform: org.hibernate.dialect.MySQLDialect
+
+
 student:
   name: Ayush Basnet
   department: Java
   project : NAMS
+
+#logging:
+#  level:
+#    org:
+#      springframework: debug
