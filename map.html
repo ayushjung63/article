@@ -1,0 +1,24 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 900px;"></div>
+    <script>
+        var map = L.map('map').setView([27.687945878854304, 85.30814979851364], 10); // Set your initial map center coordinates and zoom level
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+        var marker = L.marker([27.687318805148372, 85.30699106255175]).addTo(map);
+        marker.bindPopup('Distance: 83.66825232781856 m');
+        var marker = L.marker([27.68706229550731, 85.30760260624035]).addTo(map);
+        marker.bindPopup('Distance: 107.61169950386048 m');
+    </script>
+</body>
+</html>html>        var marker = L.marker([27.68749456143085, 85.3075167755544]).addTo(map);
+        marker.bindPopup('Marker at 27.68749456143085, 85.3075167755544');
+    </script>
+</body>
+</html>
