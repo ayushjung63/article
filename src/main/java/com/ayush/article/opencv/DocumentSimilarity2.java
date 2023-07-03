@@ -9,17 +9,16 @@ import java.util.Set;
 
 public class DocumentSimilarity2 {
     public static void main(String[] args) {
-        String filePath1 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
-        String filePath2 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
-
+        String filePath1 = "/home/shady/Desktop/Jasper/5.pdf";
+        String filePath2 = "/home/shady/Desktop/Jasper/6.pdf";
         try {
             String text1 = readTextFromFile(filePath1);
             String text2 = readTextFromFile(filePath2);
 
-            double similarity = calculateCosineSimilarity(text1, text2);
+            double similarity = calculateCosineSimilarity(text2, text1);
 
             System.out.println("Cosine Similarity: " + similarity);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

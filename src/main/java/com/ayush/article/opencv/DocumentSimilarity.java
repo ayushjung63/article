@@ -6,12 +6,12 @@ import java.io.IOException;
 
 public class DocumentSimilarity {
     public static void main(String[] args) {
-        String filePath1 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
-        String filePath2 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
+        String filePath1 = "/home/shady/Desktop/Jasper/3.pdf";
+        String filePath2 = "/home/shady/Desktop/Jasper/4.pdf";
 
         try {
             double similarityPercentage = calculateDocumentSimilarity(filePath1, filePath2);
-            System.out.println("Document Similarity: " + similarityPercentage + "%");
+            System.out.println("Document Similarity: " + similarityPercentage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,7 +36,7 @@ public class DocumentSimilarity {
                 line2 = reader2.readLine();
             }
 
-            double similarityPercentage = (double) commonChars / Math.max(totalChars1, totalChars2) * 100;
+            double similarityPercentage = (double) commonChars / Math.max(totalChars1, totalChars2);
             return similarityPercentage;
         }
     }

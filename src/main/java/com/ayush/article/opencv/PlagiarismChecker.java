@@ -1,18 +1,23 @@
 package com.ayush.article.opencv;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.pdf.PDFParser;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
+
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
 public class PlagiarismChecker {
-    public static void main(String[] args) throws IOException {
-        String filePath1 = "/home/shady/Desktop/Jasper/3.pdf";
-        String filePath2 = "/home/shady/Desktop/Jasper/4.pdf";
+    public static void main(String[] args) throws IOException, TikaException, SAXException {
+        String filePath1 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
+        String filePath2 = "/home/shady/Desktop/Jasper/BloodBankFinalProposal.pdf";
 
-        String sourceText = readTextFromFile(filePath1);
-        String targetText = readTextFromFile(filePath2);
+        String sourceText = readContentFromPdf(filePath1);
+        String targetText = readContentFromPdf(filePath2);
 
         double similarityScore = calculateJaccardSimilarity(sourceText, targetText);
 
@@ -23,6 +28,35 @@ public class PlagiarismChecker {
         } else {
             System.out.println("No plagiarism detected.");
         }
+    }
+
+    public static String readContentFromPdf(String path) throws IOException, TikaException, SAXException {
+        // Create a content handler
+        BodyContentHandler contenthandler
+                = new BodyContentHandler();
+
+        // Create a file in local directory
+        File f = new File(path);
+
+        // Create a file input stream
+        // on specified path with the created file
+        FileInputStream fstream = new FileInputStream(f);
+
+        // Create an object of type Metadata to use
+        Metadata data = new Metadata();
+
+        // Create a context parser for the pdf document
+        ParseContext context = new ParseContext();
+
+        // PDF document can be parsed using the PDFparser
+        // class
+        PDFParser pdfparser = new PDFParser();
+
+        // Method parse invoked on PDFParser class
+        pdfparser.parse(fstream, contenthandler, data,
+                context);
+
+        return  contenthandler.toString();
     }
 
     public static String readTextFromFile(String filePath) throws IOException {
